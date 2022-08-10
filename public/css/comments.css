@@ -1,0 +1,18 @@
+.comments {
+    width: 1000px;
+    word-wrap: break-word;
+    text-align: left;
+}
+
+td {
+    padding: 10px;
+    vertical-align: top;
+}
+
+td.ship-date {
+    text-align: right;
+}
+
+th.comments {
+    padding-left: 10px;
+}

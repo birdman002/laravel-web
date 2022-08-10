@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\ListingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,10 +25,11 @@ use App\Models\Listing;
 // update - update listing
 // destroy - delete listing
 
+// Show all Order Comments
+Route::get('/comments', [CommentsController::class, 'index']);
 
 // All Listings
-Route::get('/', [ListingController::class, 'index']);
-
+// Route::get('/', [ListingController::class, 'index']);
 // Test Headers
 Route::get('/hello', function()
 {
@@ -37,10 +39,12 @@ Route::get('/hello', function()
 });
 
 // Show Create Listing
-Route::get('/listing/create', [ListingController::class, 'create']);
+//Route::get('/listing/create', [ListingController::class, 'create']);
 
 // Store Listing 
-Route::post('/listings', [ListingController::class, 'store']);
+//Route::post('/listings', [ListingController::class, 'store']);
 
 // Single Listing keep this at the bottom
-Route::get('/listing/{listing}', [ListingController::class, 'show']);
+//Route::get('/listing/{listing}', [ListingController::class, 'show']);
+
+
