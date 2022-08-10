@@ -17,7 +17,7 @@ class CommentsController extends Controller
         /*return view('comments.index', [
             
             'data' => [
-                'comments' => Comments::where('comments', 'like', '%candy%')->get(),
+                'candy' => Comments::where('comments', 'like', '%candy%')->get(),
                 'calls' => Comments::where('comments', 'like', '%call me%')->get(),
                 'referral' => Comments::where('comments', 'like', '%referred me%')->get(),
                 'signature' => Comments::where('comments', 'like', '%signature%')->get(),
@@ -26,12 +26,12 @@ class CommentsController extends Controller
                                     ->where('comments', 'not like', '%referred me%')
                                     ->where('comments', 'not like', '%signature%')->get()
             ]
-        ]); */ 
+        ]); */
 
         $pdf = PDF::loadView('comments.index', [
             
             'data' => [
-                'comments' => Comments::where('comments', 'like', '%candy%')->get(),
+                'candy' => Comments::where('comments', 'like', '%candy%')->get(),
                 'calls' => Comments::where('comments', 'like', '%call me%')->get(),
                 'referral' => Comments::where('comments', 'like', '%referred me%')->get(),
                 'signature' => Comments::where('comments', 'like', '%signature%')->get(),
@@ -42,7 +42,7 @@ class CommentsController extends Controller
             ]
             ]);
 
-        return $pdf->download('comments.pdf'); 
+        return $pdf->download('comments.pdf');
 
     }
 }

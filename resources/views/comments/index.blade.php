@@ -6,7 +6,7 @@
 <table class="table table-striped" width="100%" page-break-inside: auto;>
     <x-comments-table-header />
     <tbody>
-      @foreach($data['comments'] as $comment)
+      @foreach($data['candy'] as $comment)
         <x-comments-body :comment="$comment" />
       @endforeach
     </tbody>
