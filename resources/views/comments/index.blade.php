@@ -21,7 +21,7 @@
       @endforeach
     </tbody>
 </table>
-
+<h2>Comments about who referred me</h2>
 <table class="table table-striped" width="100%" page-break-inside: auto;>
     <x-comments-table-header />
     <tbody>

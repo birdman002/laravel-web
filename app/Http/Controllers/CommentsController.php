@@ -14,38 +14,45 @@ class CommentsController extends Controller
     {
         // Show the view instead of a PDF for debugging
         //dd(Comments::all());
-        /*return view('comments.index', [
-            
+        return view('comments.index', [
             'data' => [
                 'candy' => Comments::where('comments', 'like', '%candy%')
-                                    ->orWhere('comments', 'like', '%taffy%')->get(),
-                'calls' => Comments::where('comments', 'like', '%call me%')->get(),
-                'referral' => Comments::where('comments', 'like', '%referred me%')->get(),
+                                    ->orWhere('comments', 'like', '%taffy%')
+                                    ->orWhere('comments', 'like', '%tootsie%')
+                                    ->orWhere('comments', 'like', '%smarties%')->get(),
+                'calls' => Comments::where('comments', 'like', '%call%')->get(),
+                'referral' => Comments::where('comments', 'like', '%refer%')->get(),
                 'signature' => Comments::where('comments', 'like', '%signature%')->get(),
                 'other' => Comments::where('comments', 'not like', '%candy%')
-                                    ->where('comments', 'not like', '%call me%')
-                                    ->where('comments', 'not like', '%referred me%')
+                                    ->where('comments', 'not like', '%tootsie%')
+                                    ->where('comments', 'not like', '%smarties%')
+                                    ->where('comments', 'not like', '%call%')
+                                    ->where('comments', 'not like', '%refer%')
                                     ->where('comments', 'not like', '%signature%')
-                                    ->where('comments', 'not like', '%taffy%')->get()
-            ]
-        ]); */
-
-        $pdf = PDF::loadView('comments.index', [
-            'data' => [
-                'candy' => Comments::where('comments', 'like', '%candy%')
-                                    ->orWhere('comments', 'like', '%taffy%')->get(),
-                'calls' => Comments::where('comments', 'like', '%call me%')->get(),
-                'referral' => Comments::where('comments', 'like', '%referred me%')->get(),
-                'signature' => Comments::where('comments', 'like', '%signature%')->get(),
-                'other' => Comments::where('comments', 'not like', '%candy%')
-                                    ->where('comments', 'not like', '%call me%')
-                                    ->where('comments', 'not like', '%referred me%')
-                                    ->where('comments', 'not like', '%signature%')
-                                    ->where('comments', 'not like', '%taffy%')->get()
+                                    ->get()
             ]
         ]);
 
-        return $pdf->download('comments.pdf');
+        /*$pdf = PDF::loadView('comments.index', [
+            'data' => [
+                'candy' => Comments::where('comments', 'like', '%candy%')
+                                    ->orWhere('comments', 'like', '%taffy%')
+                                    ->orWhere('comments', 'like', '%tootsie%')
+                                    ->orWhere('comments', 'like', '%smarties%')->get(),
+                'calls' => Comments::where('comments', 'like', '%call%')->get(),
+                'referral' => Comments::where('comments', 'like', '%refer%')->get(),
+                'signature' => Comments::where('comments', 'like', '%signature%')->get(),
+                'other' => Comments::where('comments', 'not like', '%candy%')
+                                    ->where('comments', 'not like', '%tootsie%')
+                                    ->where('comments', 'not like', '%smarties%')
+                                    ->where('comments', 'not like', '%call%')
+                                    ->where('comments', 'not like', '%refer%')
+                                    ->where('comments', 'not like', '%signature%')
+                                    ->get()
+            ]
+        ]);
+
+        return $pdf->download('comments.pdf');*/
 
     }
 }
