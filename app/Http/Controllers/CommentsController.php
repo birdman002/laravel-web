@@ -14,7 +14,26 @@ class CommentsController extends Controller
     {
         // Show the view instead of a PDF for debugging
         //dd(Comments::all());
-        return view('comments.index', [
+        /*return view('comments.index', [
+            'data' => [
+                'candy' => Comments::where('comments', 'like', '%candy%')
+                                    ->orWhere('comments', 'like', '%taffy%')
+                                    ->orWhere('comments', 'like', '%tootsie%')
+                                    ->orWhere('comments', 'like', '%smarties%')->get(),
+                'calls' => Comments::where('comments', 'like', '%call%')->get(),
+                'referral' => Comments::where('comments', 'like', '%refer%')->get(),
+                'signature' => Comments::where('comments', 'like', '%signature%')->get(),
+                'other' => Comments::where('comments', 'not like', '%candy%')
+                                    ->where('comments', 'not like', '%tootsie%')
+                                    ->where('comments', 'not like', '%smarties%')
+                                    ->where('comments', 'not like', '%call%')
+                                    ->where('comments', 'not like', '%refer%')
+                                    ->where('comments', 'not like', '%signature%')
+                                    ->get()
+            ]
+        ]);*/
+
+        $pdf = PDF::loadView('comments.index', [
             'data' => [
                 'candy' => Comments::where('comments', 'like', '%candy%')
                                     ->orWhere('comments', 'like', '%taffy%')
@@ -33,26 +52,7 @@ class CommentsController extends Controller
             ]
         ]);
 
-        /*$pdf = PDF::loadView('comments.index', [
-            'data' => [
-                'candy' => Comments::where('comments', 'like', '%candy%')
-                                    ->orWhere('comments', 'like', '%taffy%')
-                                    ->orWhere('comments', 'like', '%tootsie%')
-                                    ->orWhere('comments', 'like', '%smarties%')->get(),
-                'calls' => Comments::where('comments', 'like', '%call%')->get(),
-                'referral' => Comments::where('comments', 'like', '%refer%')->get(),
-                'signature' => Comments::where('comments', 'like', '%signature%')->get(),
-                'other' => Comments::where('comments', 'not like', '%candy%')
-                                    ->where('comments', 'not like', '%tootsie%')
-                                    ->where('comments', 'not like', '%smarties%')
-                                    ->where('comments', 'not like', '%call%')
-                                    ->where('comments', 'not like', '%refer%')
-                                    ->where('comments', 'not like', '%signature%')
-                                    ->get()
-            ]
-        ]);
-
-        return $pdf->download('comments.pdf');*/
+        return $pdf->download('comments.pdf');
 
     }
 }
